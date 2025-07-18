@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@layer components {
+  .blue-text{
+     @apply text-green-700 text-4xl
+  }
+  .flex-center {
+    @apply flex justify-center items-center flex-col
+  }
+  .text-box {
+    @apply  text-center gap-y-1 p-4
+  }
+}
+
+@layer base {
+  :root {
+    --color-primary-cyan: hsl(180, 66%, 49%);
+    --color-primary-dark-violet: hsl(257, 27%, 26%);
+    --color-secondary-red: hsl(0, 87%, 67%);
+    --color-neutral-gray: hsl(0, 0%, 75%);
+    --color-neutral-grayish-violet: hsl(257, 7%, 63%);
+    --color-neutral-very-dark-blue: hsl(255, 11%, 22%);
+    --color-neutral-very-dark-violet: hsl(260, 8%, 14%);
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--color-primary-dark-violet); /* ✅ This works */
+  }
+  h1 {
+    font-size: 10vw;
+  }
+}
