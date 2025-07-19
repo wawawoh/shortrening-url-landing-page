@@ -5,16 +5,19 @@
      @apply text-green-700 text-4xl
   }
   .flex-center {
-    @apply flex justify-center items-center flex-col
+    @apply flex justify-center items-center flex-col 
   }
   .text-box {
-    @apply  text-center gap-y-1 p-4
+    @apply  text-center gap-y-1 p-4 gap-y-3
+  }
+  .primary-button {
+    @apply bg-cyan-500 rounded-4xl py-3 px-5 text-white
   }
 }
 
 @layer base {
   :root {
-    --color-primary-cyan: hsl(180, 66%, 49%);
+    --color-cyan: hsl(180, 66%, 49%);
     --color-primary-dark-violet: hsl(257, 27%, 26%);
     --color-secondary-red: hsl(0, 87%, 67%);
     --color-neutral-gray: hsl(0, 0%, 75%);
@@ -29,4 +32,12 @@
   h1 {
     font-size: 10vw;
   }
+  h2 {
+    color: green;
+  }
+  body {
+    background-color: (257, 7%, 63%);
+
+  }
+ 
 }

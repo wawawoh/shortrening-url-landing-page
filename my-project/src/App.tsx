@@ -6,7 +6,7 @@ import Container from './Container'
 function App() {
   const [search, setSearch] = useState("")
 
-  const [history, setHistory] = useState("")
+  const [history, setHistory] = useState([])
   
   const handleSubmit = (e) => {
   e.preventDefault();
@@ -30,6 +30,10 @@ function App() {
 
       response = await response.json();
      console.log("here is the response", response.short_url)
+     setHistory((prev)=> [...prev, response.short_url])
+     setSearch("")
+
+
       
     } catch (err) {
       console.error("Error:", err.message);
@@ -54,10 +58,10 @@ function App() {
         <img src="\images\illustration-working.svg" alt="" />
       </div>
       <div className='flex-center text-box'>
-        <h1> More than just shorter links</h1>
-        <p>Build your brand’s recognition and get detailed insights 
+        <h1 className='font-bold'> More than just shorter links</h1>
+        <p className='text-gray-700'>Build your brand’s recognition and get detailed insights 
   on how your links are performing.</p>
-        <button>Get Started</button>
+        <button className='primary-button'>Get Started</button>
       </div>
 
     </section>
@@ -67,11 +71,14 @@ function App() {
 
   {/* link */}
     <section>
-      <div className='flex-center text-box'>
-        <form onSubmit={(e)=> handleSubmit(e)}>
-          <input value={search} onChange={(e)=> setSearch(e.target.value)} type="text" placeholder='Enter your text here' name='link' />
+      <div className='bg-[url(/images/bg-boost-mobile.svg)]  bg-no-repeat p-2 '>
+        <form className='flex-center text-box items-stretch py-2 px-10' onSubmit={(e)=> handleSubmit(e)}>
+          <input className='bg-white rounded-2xl py-3 px-2' value={search} onChange={(e)=> setSearch(e.target.value)} type="text" placeholder='Enter your text here' name='link' />
           <label htmlFor="link"></label>
-          <button>input buttin </button>
+          <button className='primary-button py-3 rounded-2xl font-extrabold'>Shorten it! </button>
+          {history.map((item,index)=> {
+            return <li key={index}>{item}</li>
+          })}
         </form>
        
       </div>
@@ -80,26 +87,26 @@ function App() {
 
   {/* advnaced stas*/}
   <section>
-    <div className='flex-center text-box'>
-      <h3> Advanced Statistics</h3>
+    <div className='flex-center text-box '>
+      <h3 className='font-bold'> Advanced Statistics</h3>
       <p> Track how your links are performing across the web with our 
   advanced statistics dashboard.</p>
   <button>Get started </button>
     </div>
-    <article className='flex flex-col gap-y-2 items-center'>
-      <Container />
-      <Container />
-      <Container />
+    <article className='flex flex-col gap-y-[6rem] items-center text-center px-4 relative after:content-[""] after:w-[0.5em] after:h-[100%] after:bg-teal-500 after:z-1 after:left-[50%] after:absolute after:-translate-x-1 '>
+      <Container title={"Brand Recogniton"} text ={"Boost your brand recognition with each click. Generic links don’t  mean a thing. Branded links help instil confidence in your content."} img={"/images/icon-brand-recognition.svg"} />
+      <Container title={"Deatiled Records"} text ={" Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions."} img={"/images/icon-detailed-records.svg"} />
+      <Container title={"Fully Customisable"} text ={" Improve brand awareness and content discoverability through customizable links, supercharging audience engagement."} img={"/images/icon-fully-customizable.svg"} />
     </article>
     
   </section>
 
   {/* final cta */}
-  <section className='text-box flex-center'>
-    <h3>
+  <section className='text-box flex-center bg-[url(/images/bg-boost-mobile.svg)]  bg-no-repeat p-5'>
+    <h3 className='font-bold text-2xl text-white'>
       Boost your links today!
     </h3>
-    <button>  Get Started</button>
+    <button className='primary-button'>  Get Started</button>
 
   </section>
   </main>
