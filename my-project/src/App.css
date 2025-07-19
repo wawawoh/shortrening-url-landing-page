@@ -8,13 +8,25 @@
     @apply flex justify-center items-center flex-col 
   }
   .text-box {
-    @apply  text-center gap-y-1 p-4 gap-y-3
+    @apply  text-center gap-y-1 p-4 pt-10 gap-y-3
   }
   .primary-button {
     @apply bg-cyan-500 rounded-4xl py-3 px-5 text-white
   }
+  .footer-links {
+    color: white;
+  }
 }
-
+@theme {
+  --color-cyan: hsl(180, 66%, 49%);
+    --color-primary-dark-violet: hsl(257, 27%, 26%);
+    --color-secondary-red: hsl(0, 87%, 67%);
+    --color-neutral-gray: hsl(0, 0%, 75%);
+    --color-neutral-grayish-violet: hsl(257, 7%, 63%);
+    --color-neutral-very-dark-blue: hsl(255, 11%, 22%);
+    --color-neutral-very-dark-violet: hsl(260, 8%, 14%);
+  
+}
 @layer base {
   :root {
     --color-cyan: hsl(180, 66%, 49%);
@@ -39,5 +51,6 @@
     background-color: (257, 7%, 63%);
 
   }
+
  
 }
