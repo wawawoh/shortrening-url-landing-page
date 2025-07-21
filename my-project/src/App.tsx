@@ -47,9 +47,23 @@ function App() {
   return (
    <>
    {/* header */}
-   <header className='flex justify-between px-4 py-2'>
+   <header className='flex justify-between px-4 py-2 relative'>
     <img src="\public\images\logo.svg" alt="" />
     <button>menu</button>
+    <nav className='absolute flex z-10 w-[90vw] py-10 px-7 flex-col left-[50%] top-[500%] -translate-[50%] bg-primary-dark-violet justify-center items-center gap-5 h-[70vh] rounded-2xl text-white font-semibold lg:text-secondary-red flex-row'>
+      <p><a href="#">Features</a></p>
+<p><a href="#">Pricing</a></p>
+<p className='mb-auto'><a href="#">Resources</a></p>
+{screen.width < 1000 && 
+
+<hr className='w-full h-[2px] bg-white my-2' />}
+
+
+
+<p><a href="#">Login</a></p>
+<p className='rounded-full bg-cyan px-8 py-3'><a href="#">Sign Up</a></p>
+
+    </nav>
    </header>
   {/* hero */}
   <main>
