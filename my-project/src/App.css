@@ -13,8 +13,19 @@
   .primary-button {
     @apply bg-cyan-500 rounded-4xl py-3 px-5 text-white
   }
+  .menu-active {
+    @apply absolute flex z-10 w-[90vw] py-10 px-7 flex-col left-[50%] top-[500%] -translate-[50%] bg-primary-dark-violet justify-center items-center gap-5 h-[70vh] rounded-2xl text-white font-semibold 
+
+  }
+  .menu-inactive {
+    @apply hidden
+  }
   .footer-links {
-    color: white;
+    @apply text-white flex flex-col items-center my-3;
+    li {
+      @apply my-1
+    }
+   
   }
 }
 @theme {

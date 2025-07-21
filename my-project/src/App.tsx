@@ -5,8 +5,9 @@ import Container from './Container'
 
 function App() {
   const [search, setSearch] = useState("")
+  const [menuDisplay, setMenuDisplay] = useState(false)
 
-  const [history, setHistory] = useState([])
+  const [history, setHistory] = useState({})
   
   const handleSubmit = (e) => {
   e.preventDefault();
@@ -30,7 +31,9 @@ function App() {
 
       response = await response.json();
      console.log("here is the response", response.short_url)
-     setHistory((prev)=> [...prev, response.short_url])
+   
+     setHistory((prev)=> ({...prev, [response.short_url]: search}))
+    //  brackets around curly brackets otherwise itd be a function, we are returing an object 
      setSearch("")
 
 
@@ -49,8 +52,8 @@ function App() {
    {/* header */}
    <header className='flex justify-between px-4 py-2 relative'>
     <img src="\public\images\logo.svg" alt="" />
-    <button>menu</button>
-    <nav className='absolute flex z-10 w-[90vw] py-10 px-7 flex-col left-[50%] top-[500%] -translate-[50%] bg-primary-dark-violet justify-center items-center gap-5 h-[70vh] rounded-2xl text-white font-semibold lg:text-secondary-red flex-row'>
+    <button onClick={()=> setMenuDisplay((prev)=> !prev)}>menu</button>
+    <nav className= {menuDisplay ? "menu-active" : "menu-inactive"}>
       <p><a href="#">Features</a></p>
 <p><a href="#">Pricing</a></p>
 <p className='mb-auto'><a href="#">Resources</a></p>
@@ -84,17 +87,31 @@ function App() {
   
 
   {/* link */}
-    <section>
-      <div className='bg-[url(/images/bg-boost-mobile.svg)]  bg-no-repeat p-2 bg-primary-dark-violet'>
-        <form className='flex-center text-box items-stretch py-2 px-10' onSubmit={(e)=> handleSubmit(e)}>
+    <section className='p-3 rounded-3xl'>
+      <div className='bg-[url(/images/bg-boost-mobile.svg)]  bg-no-repeat p-2 bg-primary-dark-violet rounded-2xl'>
+        <form className='flex-center text-box items-stretch py-2 px-6' onSubmit={(e)=> handleSubmit(e)}>
           <input className='bg-white rounded-2xl py-3 px-2' value={search} onChange={(e)=> setSearch(e.target.value)} type="text" placeholder='Enter your text here' name='link' />
           <label htmlFor="link"></label>
           <button className='primary-button py-3 rounded-2xl font-extrabold'>Shorten it! </button>
-          {history.map((item,index)=> {
-            return <li key={index}>{item}</li>
-          })}
+          
         </form>
        
+      </div>
+      <div className='flex flex-col gap-3 p-2'>
+        {Object.keys(history).map((item,index)=> {
+            return (
+                <div className='flex flex-col items-center gap-2 px-3 py-4 bg-white rounded-2xl text-[0.8rem] ' key={index}> 
+                <p>{history[item]}</p>
+            <p className=''>{item}</p>
+            <button className='self-stretch primary-button rounded-2xl py-2' onClick={()=> navigator.clipboard.writeText(item)}>Copied</button>
+            
+            
+
+            </div> 
+
+            )
+          
+          })}
       </div>
       
     </section>
@@ -136,20 +153,27 @@ function App() {
   <li>Analytics</li>
 </ul>
 
-<ul>
+<ul className='footer-links'>
   <li><strong>Resources</strong></li>
   <li>Blog</li>
   <li>Developers</li>
   <li>Support</li>
 </ul>
 
-<ul>
-  <li><strong>Company</strong></li>
+<ul className='footer-links'>
+  <li ><strong>Company</strong></li>
   <li>About</li>
   <li>Our Team</li>
   <li>Careers</li>
   <li>Contact</li>
 </ul>
+
+<div className='flex px-7 justify-between w-[80vw]'>
+  <img src="\images\icon-facebook.svg" alt="" />
+  <img src="\images\icon-twitter.svg" alt="" />
+  <img src="\images\icon-pinterest.svg" alt="" />
+  <img src="\images\icon-instagram.svg" alt="" />
+</div>
 
 
   </footer>
