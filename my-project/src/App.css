@@ -11,17 +11,16 @@
     @apply  text-center gap-y-1 p-4 pt-10 gap-y-3
   }
   .primary-button {
-    @apply bg-cyan-500 rounded-4xl py-3 px-5 text-white
+    @apply bg-cyan-500 rounded-4xl py-3 px-5 text-white hover:brightness-[1.1]
   }
   .menu-active {
-    @apply absolute flex z-10 w-[90vw] py-10 px-7 flex-col left-[50%] top-[500%] -translate-[50%] bg-primary-dark-violet justify-center items-center gap-5 h-[70vh] rounded-2xl text-white font-semibold 
-
+    @apply absolute flex z-10 w-[90vw] py-10 px-7 flex-col left-[50%] top-[500%] -translate-[50%] bg-primary-dark-violet justify-center items-center gap-5 h-[40vh] rounded-2xl text-white font-semibold lg:bg-transparent lg:static lg:p-0 lg:flex-row lg:translate-0 lg:h-auto lg:px-6 lg:py-2 lg:text-gray-500 lg:gap-20 lg:items-center
   }
   .menu-inactive {
     @apply hidden
   }
   .footer-links {
-    @apply text-white flex flex-col items-center my-3;
+    @apply text-white flex flex-col items-center my-3 lg:flex lg:self-center;
     li {
       @apply my-1
     }
@@ -52,15 +51,16 @@
   h1, h2, h3, h4 {
     color: var(--color-primary-dark-violet); /* ✅ This works */
   }
-  h1 {
-    font-size: 10vw;
-  }
+ 
   h2 {
     color: green;
   }
   body {
     background-color: (257, 7%, 63%);
 
+  }
+  button, a {
+    cursor: pointer;
   }
 
  
